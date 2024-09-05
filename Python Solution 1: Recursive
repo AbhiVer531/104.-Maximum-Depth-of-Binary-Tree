@@ -1,0 +1,18 @@
+# Definition for a binary tree node.
+# class TreeNode:
+#     def __init__(self, val=0, left=None, right=None):
+#         self.val = val
+#         self.left = left
+#         self.right = right
+
+class Solution:
+    def maxDepth(self, root: Optional[TreeNode]) -> int:
+        def bruh(root: Optional[TreeNode], depth: int) -> int:
+            if root is None:
+                return depth
+            heightLeft = bruh(root.left, depth+1)
+            heightRight = bruh(root.right, depth+1)
+            return max(heightLeft, heightRight)        
+        if root is None:
+            return 0        
+        return bruh(root, 0)
